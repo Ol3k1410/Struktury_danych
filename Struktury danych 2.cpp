@@ -7,7 +7,6 @@
 
 using namespace std;
 
-// ======================= ELEMENT =======================
 struct Element {
     int value;
     int priority;
@@ -15,7 +14,6 @@ struct Element {
     Element(int v, int p) : value(v), priority(p) {}
 };
 
-// ======================= INTERFEJS =======================
 class IPriorityQueue {
 public:
     virtual void push(int value, int priority) = 0;
@@ -26,7 +24,6 @@ public:
     virtual ~IPriorityQueue() {}
 };
 
-// ======================= KOPIEC =======================
 class BinaryHeap : public IPriorityQueue {
     vector<Element> heap;
 
@@ -84,8 +81,6 @@ public:
         }
     }
 };
-
-// ======================= LISTY =======================
 class UnsortedListPQ : public IPriorityQueue {
     list<Element> data;
 
@@ -140,7 +135,6 @@ public:
     }
 };
 
-// ======================= TRIMMED MEAN =======================
 double averageTrim(vector<long long>& times) {
     sort(times.begin(), times.end());
     int cut = times.size() * 0.05;
@@ -152,7 +146,6 @@ double averageTrim(vector<long long>& times) {
     return sum / (times.size() - 2 * cut);
 }
 
-// ======================= MEASURE =======================
 template<typename Func>
 double measure(Func f) {
     const int TRIALS = 100;
@@ -171,7 +164,6 @@ double measure(Func f) {
     return averageTrim(times);
 }
 
-// ======================= TESTY =======================
 const int N = 20000;
 
 void fill(IPriorityQueue& pq) {
@@ -219,7 +211,6 @@ void runTests(string name) {
         }) << " ns\n";
 }
 
-// ======================= MAIN =======================
 int main() {
     srand(time(nullptr));
 
